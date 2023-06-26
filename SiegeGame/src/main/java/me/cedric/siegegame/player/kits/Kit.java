@@ -57,6 +57,10 @@ public class Kit {
     }
 
     private boolean isFree(ItemStack itemStack, WorldGame worldGame) {
+        if (itemStack.getType().name().endsWith("POTION")) {
+            return true; // Potions are considered free
+        }
+
         ShopItem shopItem = getShopItem(itemStack, worldGame);
         return shopItem != null && shopItem.getPrice() <= 0;
     }
@@ -131,3 +135,4 @@ public class Kit {
         return items.toArray(new ItemStack[0]);
     }
 }
+
